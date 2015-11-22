@@ -21,7 +21,7 @@ public class KisiController implements Serializable{
 	
 	@PostConstruct
 	private void init() {
-		setIsimSoyisim("Taner ABC");
+		setIsimSoyisim("Taner ABC");  
 	}
 		
 	public String getIsimSoyisim() {

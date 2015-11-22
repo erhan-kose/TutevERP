@@ -5,52 +5,43 @@
  */
 package org.tutev.web.erp.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.tutev.web.erp.entity.genel.Kisi;
 
 /**
  * 
  * @author Bilisim-Hoca
  */
+@Service("kisiService")
 public class KisiService implements ServiceBase<Kisi> {
 
 	@Autowired
-	private transient BaseDao baseService;
+	private transient BaseDao baseDao;
 
 	@Override
 	public Kisi save(Kisi entity) {
-		entity.setDurum(Boolean.TRUE);
-		entity.setEklemeTarihi(new Date());
-		entity.setEkleyen("CURR_USER");
-		getSession().save(entity);
+		baseDao.save(entity);
 		return entity;
 	}
 
 	@Override
 	public Kisi update(Kisi entity) {
-
-		entity.setGuncellemeTarihi(new Date());
-		entity.setGuncelleyen("CURR_USER");
-		getSession().saveOrUpdate(entity);
-
+		baseDao.saveOrUpdate(entity);
 		return entity;
 	}
 
 	@Override
 	public Boolean delete(Kisi entity) {
 		try {
-
-			getSession().delete(entity);
-
+			baseDao.delete(entity);
 		} catch (Exception e) {
 			return false;
 		}
-
 		return true;
 	}
 
@@ -61,6 +52,7 @@ public class KisiService implements ServiceBase<Kisi> {
 		return kisi;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Kisi> getAll() {
 		Criteria criteria = getSession().createCriteria(Kisi.class);
@@ -69,6 +61,6 @@ public class KisiService implements ServiceBase<Kisi> {
 
 	@Override
 	public Session getSession() {
-		return baseService.getSession();
+		return baseDao.getSession();
 	}
 }

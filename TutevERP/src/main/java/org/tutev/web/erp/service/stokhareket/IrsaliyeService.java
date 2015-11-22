@@ -9,7 +9,10 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.tutev.web.erp.entity.stokhareket.Irsaliye;
+import org.tutev.web.erp.service.BaseDao;
 import org.tutev.web.erp.service.ServiceBase;
 
 /**
@@ -17,54 +20,38 @@ import org.tutev.web.erp.service.ServiceBase;
  * @param <Irsaliye>
  * 
  */
+@Service("irsaliyeService")
 public class IrsaliyeService implements ServiceBase<Irsaliye> {
 
+	@Autowired
+	public transient BaseDao baseDao;
+	
 	@Override
 	public Irsaliye save(Irsaliye entity) {
-		Session session = getSession();
-		Transaction t = session.getTransaction();
-		t.begin();
-		entity.setDurum(Boolean.TRUE);
-		entity.setEklemeTarihi(new Date());
-		entity.setEkleyen("CURR_USER");
-		session.save(entity);
-		t.commit();
+		baseDao.save(entity);
 		return entity;
 	}
 
 	@Override
 	public Irsaliye update(Irsaliye entity) {
-		Session session = getSession();
-		Transaction t = session.getTransaction();
-		t.begin();
-		entity.setGuncellemeTarihi(new Date());
-		entity.setGuncelleyen("CURR_USER");
-		session.saveOrUpdate(entity);
-		t.commit();
+		baseDao.saveOrUpdate(entity);
 		return entity;
 	}
 
 	@Override
 	public Boolean delete(Irsaliye entity) {
 		try {
-			Session session = getSession();
-			Transaction t = session.getTransaction();
-			t.begin();
-			session.delete(entity);
-			t.commit();
-			session.getTransaction().commit();
+			baseDao.delete(entity);
 		} catch (Exception e) {
 			return false;
 		}
-
 		return true;
 	}
 
 	@Override
 	public Irsaliye getById(Long id) {
 		Session session = getSession();
-		Irsaliye irsaliye = (Irsaliye) session.get(Irsaliye.class, id);
-		return irsaliye;
+		return (Irsaliye) session.get(Irsaliye.class, id);
 	}
 
 	@Override
