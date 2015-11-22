@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 import org.tutev.web.erp.entity.base.BaseEntity;
 
 @Entity
-@Table(name="FATURA")
+@Table(name="FTR_FATURA")
 public class Fatura extends BaseEntity {
 
     private Long id;
