@@ -3,7 +3,6 @@ package org.tutev.web.erp.controller.genel;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
@@ -30,7 +29,6 @@ public class KisiController implements Serializable {
 
 	@PostConstruct
 	private void init() {
-		kisi = new Kisi();
 		kisiListesi=kisiService.getAll();
 	}
 
