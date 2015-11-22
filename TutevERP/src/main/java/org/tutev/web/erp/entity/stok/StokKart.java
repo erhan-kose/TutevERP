@@ -13,9 +13,12 @@ import javax.persistence.Table;
 import org.tutev.web.erp.entity.base.BaseEntity;
 
 @Entity                                         //Specifies that the class is an entity-it must have a no-argument constructor
-@Table(name = "STOK_KART")                     // to specify the details of the table that will be used to persist the entity in the database
+@Table(name = "STK_KART")                     // to specify the details of the table that will be used to persist the entity in the database
 public class StokKart extends BaseEntity{   
 	  
+	
+	
+	
 	 private Long id;
 	 private String kod ;
 	 private String kategori;
@@ -32,7 +35,6 @@ public class StokKart extends BaseEntity{
 	    }
 			
 			
-	 // TODO Auto-generated constructor stub
 	 public StokKart(Long id, String kod, String kategori, String urunAd,
 			String marka, String barkod, String paraBirim,
 			BigDecimal girisBirimFiyat, BigDecimal cikisBirimFiyat,
@@ -53,9 +55,9 @@ public class StokKart extends BaseEntity{
 	}
 	
 	@Id   //Each entity bean will have a primary key
-	@SequenceGenerator(name = "STK_ID",sequenceName = "STK_ID",allocationSize = 1,initialValue = 1)
-	@GeneratedValue(generator = "STK_ID",strategy = GenerationType.SEQUENCE)
-	@Column(name = "STK_ID")  //to specify the details of the column to which a field or property will be mapped 
+	@SequenceGenerator(name = "SQ_STK",sequenceName = "SQ_STK",allocationSize = 1,initialValue = 1)
+	@GeneratedValue(generator = "SQ_STK",strategy = GenerationType.SEQUENCE)
+	@Column(name = "SQ_STK")  //to specify the details of the column to which a field or property will be mapped 
 	public Long getId() {
 		return id;
 	}
