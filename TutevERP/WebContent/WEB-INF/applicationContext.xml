@@ -16,7 +16,7 @@
 		http://www.springframework.org/schema/task
 		http://www.springframework.org/schema/task/spring-task-3.1.xsd">
 
-	<context:component-scan base-package="org.tutev" />
+	<context:component-scan base-package="org.tutev.web.erp" />
 
 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
 
@@ -33,7 +33,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="DataSource" />	
-		<property name="packagesToScan" value="org.tutev"/>
+		<property name="packagesToScan" value="org.tutev.web.erp"/>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
