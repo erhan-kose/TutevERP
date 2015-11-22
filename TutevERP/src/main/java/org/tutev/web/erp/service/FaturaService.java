@@ -9,32 +9,29 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.tutev.web.erp.entity.fatura.Fatura;
 
 /**
  *
  * @author Bilisim-Hoca
  */
+@Service("faturaService")
 public class FaturaService implements ServiceBase<Fatura> {
 
+	@Autowired
+	private transient BaseDao baseDao;
+	
     @Override
     public Fatura save(Fatura entity) {
-        Session session = getSession();
-        Transaction t = session.beginTransaction();
-        t.begin();
-        session.save(entity);
-        t.commit();
+    	baseDao.save(entity);
         return entity;
     }
 
     @Override
     public Fatura update(Fatura entity) {
-        Session session = getSession();
-        Transaction t = session.getTransaction();
-        t.begin();
-        session.saveOrUpdate(entity);
-        t.commit();
+    	baseDao.saveOrUpdate(entity);
         return entity;
 
     }
@@ -42,17 +39,11 @@ public class FaturaService implements ServiceBase<Fatura> {
     @Override
     public Boolean delete(Fatura entity) {
         try {
-            Session session = getSession();
-            Transaction t = session.getTransaction();
-            t.begin();
-            session.delete(entity);
-            t.commit();
+        	baseDao.delete(entity);
         } catch (Exception ex) {
             return false;
         }
-
         return true;
-
     }
 
     @Override
@@ -70,7 +61,7 @@ public class FaturaService implements ServiceBase<Fatura> {
 
     @Override
     public Session getSession() {
-    	return null;
+    	return baseDao.getSession();
     }
 
 }

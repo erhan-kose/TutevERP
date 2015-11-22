@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>TutevERP</groupId>
   <artifactId>TutevERP</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>10.0.1.RELEASE</version>
   <packaging>war</packaging>
   
   <properties>

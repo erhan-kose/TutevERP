@@ -17,7 +17,7 @@ import org.tutev.web.erp.entity.uretim.Uretim;
  * @author Erhan Kose
  */
 public class UretimService implements ServiceBase<Uretim> {
-	BaseService service = new BaseService();
+	BaseDao service = new BaseDao();
 
 	@Override
 	public Uretim save(Uretim entity) {

@@ -20,7 +20,7 @@ import org.tutev.web.erp.entity.genel.Kisi;
 public class KisiService implements ServiceBase<Kisi> {
 
 	@Autowired
-	private transient BaseService baseService;
+	private transient BaseDao baseService;
 
 	@Override
 	public Kisi save(Kisi entity) {
