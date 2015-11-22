@@ -32,6 +32,7 @@ public class Fatura extends BaseEntity {
     private Double faturaTutari;
     private Double birimFiyati;
 
+    
     @Id
     @GeneratedValue(generator = "SQ_FATURA", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(allocationSize = 1, initialValue = 1, name = "SQ_FATURA", sequenceName = "SQ_FATURA")

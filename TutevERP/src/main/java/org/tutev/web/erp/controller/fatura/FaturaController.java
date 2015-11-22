@@ -17,7 +17,6 @@ public class FaturaController {
 	@PostConstruct
 	private void init() {
 		setFaturaAdi("Fatura1");
-		
 		setFaturaId(1234);
 		
 	}
