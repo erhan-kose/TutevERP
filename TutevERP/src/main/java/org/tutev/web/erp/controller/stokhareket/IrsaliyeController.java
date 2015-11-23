@@ -4,11 +4,15 @@
 package org.tutev.web.erp.controller.stokhareket;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.tutev.web.erp.entity.stokhareket.Irsaliye;
+import org.tutev.web.erp.service.stokhareket.IrsaliyeService;
 
 /**
  * @author Mehmet Emin IŞIK
@@ -21,25 +25,46 @@ public class IrsaliyeController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 3733668559784664851L;
-	private String adSoyad;
+	@Autowired
+	private transient IrsaliyeService irsaliyeService;
 
-	/**
-	 * @return the adSoyad
-	 */
-	public String getAdSoyad() {
-		return adSoyad;
-	}
+	private Irsaliye irsaliye;
+	List<Irsaliye> irsaliyeListesi;
 
-	/**
-	 * @param adSoyad the adSoyad to set
-	 */
-	public void setAdSoyad(String adSoyad) {
-		this.adSoyad = adSoyad;
+	@SuppressWarnings("unused")
+	private void irsaliyeKaydet() {
+		irsaliyeService.save(irsaliye);
 	}
 
 	@PostConstruct
 	private void init() {
-		setAdSoyad("Mehmet Emin was here !");
+		if (irsaliyeService.getAll() != null)
+			irsaliyeListesi = irsaliyeService.getAll();
+	}
+
+	/**
+	 * @return the irsaliye
+	 */
+	public Irsaliye getIrsaliye() {
+		if (irsaliye == null) {
+			irsaliye = new Irsaliye();
+		}
+		return irsaliye;
+	}
+
+	/**
+	 * @param irsaliye
+	 *            the irsaliye to set
+	 */
+	public void setIrsaliye(Irsaliye irsaliye) {
+		this.irsaliye = irsaliye;
+	}
+
+	/**
+	 * @return the irsaliyeListesi
+	 */
+	public List<Irsaliye> getIrsaliyeListesi() {
+		return irsaliyeListesi;
 	}
 
 }

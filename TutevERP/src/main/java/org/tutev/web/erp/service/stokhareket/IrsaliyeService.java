@@ -3,12 +3,10 @@
  */
 package org.tutev.web.erp.service.stokhareket;
 
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tutev.web.erp.entity.stokhareket.Irsaliye;
@@ -51,9 +49,11 @@ public class IrsaliyeService implements ServiceBase<Irsaliye> {
 	@Override
 	public Irsaliye getById(Long id) {
 		Session session = getSession();
-		return (Irsaliye) session.get(Irsaliye.class, id);
+		Irsaliye irsaliye = (Irsaliye) session.get(Irsaliye.class, id);
+		return irsaliye;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Irsaliye> getAll() {
 		// Criteria Where
@@ -63,7 +63,7 @@ public class IrsaliyeService implements ServiceBase<Irsaliye> {
 
 	@Override
 	public Session getSession() {
-		return null;
+		return baseDao.getSession();
 	}
 
 }
