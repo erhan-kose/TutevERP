@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import org.tutev.web.erp.entity.base.BaseEntity;
 
+@SuppressWarnings("serial")
 @Entity                                         //Specifies that the class is an entity-it must have a no-argument constructor
 @Table(name = "STK_KART")                     // to specify the details of the table that will be used to persist the entity in the database
 public class StokKart extends BaseEntity{   
@@ -57,7 +58,7 @@ public class StokKart extends BaseEntity{
 	@Id   //Each entity bean will have a primary key
 	@SequenceGenerator(name = "SQ_STK",sequenceName = "SQ_STK",allocationSize = 1,initialValue = 1)
 	@GeneratedValue(generator = "SQ_STK",strategy = GenerationType.SEQUENCE)
-	@Column(name = "SQ_STK")  //to specify the details of the column to which a field or property will be mapped 
+	@Column(name = "id")  //to specify the details of the column to which a field or property will be mapped 
 	public Long getId() {
 		return id;
 	}

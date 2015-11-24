@@ -1,0 +1,67 @@
+<ui:composition 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html">
+	
+	<h:head>
+	<title>JSF 2.0 Hello World</title>
+    </h:head>
+    <h:form id="form">
+    
+    <table>
+	<tr>
+		<td valign="top">  <label for="stok_kategori">Stok Kategori:</label></td>
+		<td valign="top">  <h:inputText value="#{stokController.stokKart.kategori}" /> </td>
+	</tr>
+	<tr>
+			<td valign="top">  <label for="stok_marka">Stok Marka:</label></td>
+			<td valign="top">  <h:inputText value="#{stokController.stokKart.marka}" /> </td>
+	</tr>
+	<tr>
+			<td valign="top">  <label for="stok_urunad">Stok UrunAd:</label></td>
+			<td valign="top">  <h:inputText value="#{stokController.stokKart.urunAd}" /> </td>
+	</tr>     
+    <tr> 
+        <th colspan="3" style="text-align: center">
+        <h:commandButton
+			id="yeniStokKart" value="Yeni Stok Kart"
+			actionListener="#{stokController.yeniStokKart}">
+		</h:commandButton> 
+		</th>
+		
+        <th colspan="3" style="text-align: center">
+        <h:commandButton
+			id="stokKaydet" value="Stok Kaydet"
+			actionListener="#{stokController.stokKaydet}">
+		</h:commandButton> 
+		</th>
+	 </tr>
+	 
+    </table>
+ 
+ 
+ 
+    <h2 class="first">Stok Tablosu</h2>
+    <p:dataTable var="car" value="#{stokController.stokListesi}" tableStyleClass="ui-table-columntoggle">
+        <p:column headerText="ID">
+            <h:outputText value="#{car.id}" />
+        </p:column>
+ 
+        <p:column headerText="UrunAd">
+            <h:outputText value="#{car.urunAd}" />
+        </p:column>
+ 
+        <p:column headerText="Kategori">
+            <h:outputText value="#{car.kategori}" />
+        </p:column>
+ 
+        <p:column headerText="Marka" >
+            <h:outputText value="#{car.marka}"/>
+        </p:column>
+    </p:dataTable>
+    </h:form>
+    
+	
+</ui:composition>	
