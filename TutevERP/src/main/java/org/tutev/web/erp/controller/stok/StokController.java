@@ -56,8 +56,9 @@ public class StokController implements Serializable {
 		for (StokKart sk : stokListesi){
 			  System.out.println("stokkodu:"+sk.getKod());
 			  System.out.println("grilenkartkodu:"+stokKart.getKod());
-			  if (sk.getKod().equals(stokKart.getKod())){				  
-				 	  stokService.delete(stokKart);
+			  if (sk.getKod().equals(stokKart.getKod())){
+				  System.out.println("stokkodu:"+sk.getKod());
+				  stokService.delete(sk);
 			  }
 		}			  
     	yeniStokKart();
