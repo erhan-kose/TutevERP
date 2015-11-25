@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.tutev.web.erp.entity.stok.StokKart;
 import org.tutev.web.erp.service.StokService;
+
+
 @Controller("stokController")
 @Scope("session")
 public class StokController implements Serializable {
@@ -34,8 +36,13 @@ public class StokController implements Serializable {
 	public void stokListele() {
 		setStokListesi(stokService.getAll());
 	}
-			
+				
 	public void stokKaydet() {
+		//if(stokKart.getId()==null){
+		//stokService.save(stokKart);
+		//}else{
+		//stokService.update(stokKart);
+		//}		
 		System.out.println("Yeni Stok Kaydý");
 		//stokService.save(stokKart);
 		//yeniStokKart();
@@ -43,6 +50,20 @@ public class StokController implements Serializable {
 		yeniStokKart();
 		stokListele();
 	}
+	
+	public void stokDeleteByKod() {
+		System.out.println("Stok Kaydý Sil");
+		for (StokKart sk : stokListesi){
+			  System.out.println("stokkodu:"+sk.getKod());
+			  System.out.println("grilenkartkodu:"+stokKart.getKod());
+			  if (sk.getKod().equals(stokKart.getKod())){				  
+				 	  stokService.delete(stokKart);
+			  }
+		}			  
+    	yeniStokKart();
+		stokListele();
+	}
+	
 	
 			
 	public void yeniStokKart() {      //create new stokKart object 

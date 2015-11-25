@@ -11,6 +11,7 @@ import org.tutev.web.erp.entity.stok.StokKart;
 @Service("stokService")
 public class StokService implements ServiceBase<StokKart>{
 
+	
 	 @Autowired
 	 private transient BaseDao baseDao;
 	  
