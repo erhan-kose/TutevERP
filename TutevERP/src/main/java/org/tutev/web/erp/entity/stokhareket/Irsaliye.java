@@ -47,6 +47,21 @@ public class Irsaliye extends BaseEntity {
 	}
 
 	/**
+	 * @param id
+	 * @param tur
+	 * @param tarih
+	 * @param firma_id
+	 * @param adres
+	 */
+	public Irsaliye(Irsaliye irsaliye) {
+		this.id = irsaliye.id;
+		this.tur = irsaliye.tur;
+		this.tarih = irsaliye.tarih;
+		this.firma_id = irsaliye.firma_id;
+		this.adres = new Adres(irsaliye.adres);
+	}
+
+	/**
 	 * Constructor which initializes all object variables
 	 * 
 	 * @author Mehmet Emin IÞIK
@@ -63,7 +78,7 @@ public class Irsaliye extends BaseEntity {
 		this.tur = tur;
 		this.tarih = tarih;
 		this.firma_id = firma_id;
-		this.adres = adres;
+		this.adres = new Adres(adres);
 	}
 
 	@Id

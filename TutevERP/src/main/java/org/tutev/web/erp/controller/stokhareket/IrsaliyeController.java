@@ -24,22 +24,25 @@ public class IrsaliyeController implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3733668559784664851L;
+	private static final long serialVersionUID = -5319940611320885717L;
+
+	/**
+	 * 
+	 */
+
 	@Autowired
-	private transient IrsaliyeService irsaliyeService;
+	public transient IrsaliyeService irsaliyeService;
 
 	private Irsaliye irsaliye;
 	List<Irsaliye> irsaliyeListesi;
 
-	@SuppressWarnings("unused")
-	private void irsaliyeKaydet() {
-		irsaliyeService.save(irsaliye);
-	}
-
 	@PostConstruct
 	private void init() {
-		if (irsaliyeService.getAll() != null)
-			irsaliyeListesi = irsaliyeService.getAll();
+		irsaliyeListesi = irsaliyeService.getAll();
+	}
+
+	public void irsaliyeKaydet() {
+		irsaliyeService.save(irsaliye);
 	}
 
 	/**
@@ -65,6 +68,16 @@ public class IrsaliyeController implements Serializable {
 	 */
 	public List<Irsaliye> getIrsaliyeListesi() {
 		return irsaliyeListesi;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "IrsaliyeController [irsaliye=" + irsaliye + ", irsaliyeListesi=" + irsaliyeListesi + "]";
 	}
 
 }

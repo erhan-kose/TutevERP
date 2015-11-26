@@ -13,65 +13,69 @@
 	<h:form>
 		<h2>JSF 2.0 İrsaliye Giriş Uygulaması</h2>
 		<h2>İrsaliye Bilgilerini Giriniz...</h2>
-		<h:panelGrid columns="2" cellpadding="5">
-			<p:outputLabel for="irsaliye_no" value="İrsaliye No:" />
-			<p:inputMask id="irsaliye_no" value="#{irsaliyeController.irsaliye.id}" disabled="true"/>
+		<table width="450px">
+			<!-- <tr>
+				<td valign="top">  <label for="irsaliye_no">İrsaliye
+						No:</label></td>
+				<td valign="top">  <h:inputText name="irsaliye_no"
+						value="#{irsaliyeController.irsaliye.id}" disabled="true" /></td>
+			</tr> -->
+			<tr>
+				<td valign="top">  <label for="irsaliye_tur">İrsaliye
+						Türü:</label></td>
+				<td valign="top">  <h:selectOneMenu name="irsaliye_tur"
+						value="#{irsaliyeController.irsaliye.tur}" style="width:190px">
+						<f:selectItem itemLabel="Giriş İrsaliyesi" itemValue="G" />
+						<f:selectItem itemLabel="Çıkış İrsaliyesi" itemValue="C" />
+					</h:selectOneMenu>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">  <label for="irsaliye_tarih">Tarih:</label></td>
+				<td valign="top">  <h:inputText name="irsaliye_tarih"
+						value="#{irsaliyeController.irsaliye.tarih}" /></td>
+			</tr>
+			<tr>
+				<td valign="top">  <label for="irsaliye_firmaId">Firma
+						No:</label></td>
+				<td valign="top">  <h:inputText name="irsaliye_firmaId"
+						value="#{irsaliyeController.irsaliye.firma_id}" /></td>
+			</tr>
+			<tr>
+				<td valign="top">  <label for="irsaliye_acikAdres">Açık
+						Adresi:</label></td>
+				<td valign="top">  <h:inputTextarea name="irsaliye_acikAdres"
+						value="#{irsaliyeController.irsaliye.adres.acikAdres}" rows="5"
+						maxlength="1024" /></td>
+			</tr>
+			<tr>
+				<td valign="top">  <label for="irsaliye_mail">E-Posta :</label></td>
+				<td valign="top">  <h:inputText name="irsaliye_acikAdres"
+						value="#{irsaliyeController.irsaliye.adres.mail}" /></td>
+			</tr>
+			<tr>
+				<td valign="top">  <label for="irsaliye_tel">Telefon:</label></td>
+				<td valign="top">  <h:inputText name="irsaliye_tel"
+						value="#{irsaliyeController.irsaliye.adres.tel}" maxlength="12" /></td>
+			</tr>
+			<tr>
+				<td valign="top">  <label for="irsaliye_pk">Posta Kodu:</label></td>
+				<td valign="top">  <h:inputText name="irsaliye_pk"
+						value="#{irsaliyeController.irsaliye.adres.pk}" /></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align: center"><h:commandButton
+						id="btnIrsaliyeKaydet" value="İrsaliye Kaydet"
+						action="#{irsaliyeController.irsaliyeKaydet()}"></h:commandButton>
+					 </td>
+				<td colspan="2" style="text-align: center"><h:commandButton
+						id="btnIrsaliyeTemizle" value="Temizle" type="reset"></h:commandButton>
+					 </td>
+			</tr>
+		</table>
 
-			<p:outputLabel for="irsaliye_tur" value="İrsaliye Türü:" />
-			<p:selectOneMenu id="irsaliye_tur" value="#{irsaliyeController.irsaliye.tur}" style="width:120px">
-	            <f:selectItem itemLabel="Giriş İrsaliyesi" itemValue="G" />
-	            <f:selectItem itemLabel="Çıkış İrsaliyesi" itemValue="C" />
-	        </p:selectOneMenu>
-
-			<p:outputLabel for="irsaliye_tar" value="İrsaliye Tarihi:" />
-			<p:inputMask id="irsaliye_tar" value="#{irsaliyeController.irsaliye.tarih}" mask="99/99/9999">
-			<f:convertDateTime pattern="dd/MM/yyyy" />
-			</p:inputMask>
-
-			<p:outputLabel for="irsaliye_firmaId" value="Firma :" />
-			<p:inputMask id="irsaliye_firmaId" value="#{irsaliyeController.irsaliye.firma_id}" mask="99999" />
-
-			<p:outputLabel for="irsaliye_acikAdres" value="Açık Adresi:" />
-			<p:inputTextarea  id="irsaliye_acikAdres" value="#{irsaliyeController.irsaliye.adres.acikAdres}" rows="5" cols="30" maxlength="1024"/>
-
-			<p:outputLabel for="irsaliye_mail" value="E-Posta:" />
-			<p:inputMask id="irsaliye_mail" value="#{irsaliyeController.irsaliye.adres.mail}" mask="(999) 999 9999" />
-
-			<p:outputLabel for="irsaliye_tel" value="Telefon:" />
-			<p:inputMask id="irsaliye_tel" value="#{irsaliyeController.irsaliye.adres.tel}" mask="(999) 999 9999" />
-
-			<p:outputLabel for="irsaliye_pk" value="Posta Kodu:" />
-			<p:inputMask id="irsaliye_pk" value="#{irsaliyeController.irsaliye.adres.pk}" mask="99999" />
-
-			<p:commandButton value="Temizle" type="reset" />
-			<!-- irsaliyeController.irsaliyeKaydet -->
-			<!-- <p:commandButton value="Kaydet" update="display" oncomplete="PF('dlg').show()" /> -->
-			<p:commandButton value="İrsaliye Kaydet" update="display" oncomplete="irsaliyeController.irsaliyeKaydet" />
-		</h:panelGrid>
-
-		<p:dialog widgetVar="dlg" modal="true" resizable="false"
-			header="Values" showEffect="fade">
-			<p:panelGrid id="display" columns="2" columnClasses="label,value">
-				<h:outputText value="Date: " />
-				<h:outputText id="dateValue" value="#{maskView.date}" />
-
-				<h:outputText value="Phone: " />
-				<h:outputText id="phoneValue" value="#{maskView.phone}" />
-
-				<h:outputText value="Phone with Ext: " />
-				<h:outputText id="phoneWithExtValue" value="#{maskView.phoneExt}" />
-
-				<h:outputText value="taxId: " />
-				<h:outputText id="taxValue" value="#{maskView.taxId}" />
-
-				<h:outputText value="SSN: " />
-				<h:outputText id="ssnValue" value="#{maskView.ssn}" />
-
-				<h:outputText value="Product Key: " />
-				<h:outputText id="keyValue" value="#{maskView.productKey}" />
-			</p:panelGrid>
-		</p:dialog>
-		<p:dataTable var="irs" value="#{irsaliyeController.irsaliyeListesi}">
+		<p:dataTable name="irsaliyeList" var="irs"
+			value="#{irsaliyeController.irsaliyeListesi}">
 			<p:column headerText="İrsaliye No">
 				<h:outputText value="#{irs.id}" />
 			</p:column>
