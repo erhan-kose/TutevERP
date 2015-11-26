@@ -65,6 +65,20 @@ public class StokController implements Serializable {
 		stokListele();
 	}
 	
+	public void stokDeleteByUrunAd() {
+		System.out.println("Stok Kaydý Sil");
+		for (StokKart sk : stokListesi){
+			  System.out.println("stokkodu:"+sk.getUrunAd());
+			  System.out.println("girilenkartkodu:"+stokKart.getUrunAd());
+			  if (sk.getUrunAd()!=null && sk.getUrunAd().equals(stokKart.getUrunAd())){
+				  System.out.println("stokkodu:"+sk.getUrunAd());
+				  stokService.delete(sk);
+			  }
+		}			  
+    	yeniStokKart();
+		stokListele();
+	}
+	
 	
 			
 	public void yeniStokKart() {      //create new stokKart object 
