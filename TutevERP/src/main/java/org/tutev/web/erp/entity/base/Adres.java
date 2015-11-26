@@ -35,6 +35,21 @@ public class Adres implements Serializable {
 	 * Kayýtlarýn eklenmesi sýrasýnda tek tek set etmektense böyle bir constructor
 	 * adres objesinin kolaylýkla oluþturulmasýný saðlamak amacýyla oluþturuldu.
 	 * 
+	 * @author Mehmet Emin IÞIK a.k.a. gemini
+	 * @param adres
+	 */
+	public Adres(Adres adres) {
+		this();
+		this.tel = adres.tel;
+		this.mail = adres.mail;
+		this.acikAdres = adres.acikAdres;
+		this.pk = adres.pk;
+	}
+	
+	/**
+	 * Kayýtlarýn eklenmesi sýrasýnda tek tek set etmektense böyle bir constructor
+	 * adres objesinin kolaylýkla oluþturulmasýný saðlamak amacýyla oluþturuldu.
+	 * 
 	 * @param tel
 	 * @param mail
 	 * @param acikAdres
